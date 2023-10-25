@@ -27,6 +27,11 @@ public:
     void registroProducto(Producto product);
     void listaProductosA();
     void listaProductosB(int &num);
+    int productCosto(int indice);
+    int productPuntos(int indice);
+    int productCant(int indice);
+    int productObtPuntos(int indice);
+    void setCant(int indice);
 };
 
 Tienda::Tienda() {
@@ -87,8 +92,35 @@ void Tienda::listaProductosB(int &num)
         num++;
     }
 }
+
 string Tienda::nombreTienda()
 {
     return nomTienda;
+}
+
+int Tienda::productCosto(int indice)
+{
+    return listaProd[indice].costo();
+}
+
+int Tienda::productCant(int indice)
+{
+    return listaProd[indice].cantidad();
+}
+
+int Tienda::productObtPuntos(int indice)
+{
+    return listaProd[indice].obtenerPuntos();
+}
+
+int Tienda::productPuntos(int indice)
+{
+    return listaProd[indice].costoPuntos();
+}
+
+void Tienda::setCant(int indice)
+{
+    listaProd[indice].setCant(cantidad()-1);
+
 }
 #endif

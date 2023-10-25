@@ -14,6 +14,11 @@ public:
     Producto();
     Producto(string,string,int, int,int,int);
     void info();
+    int cantidad();
+    int costo();
+    int costoPuntos();
+    int obtenerPuntos();
+    void setCant(int cant);
 };
 
 Producto::Producto()
@@ -25,7 +30,6 @@ Producto::Producto()
     this->precioCP = 0;
     this->puntos = 0;
 }
-
 Producto::Producto(string nomProd,string id, int cant, int precio, int precioCP, int puntos)
 {
     this->nomProd = nomProd;
@@ -42,5 +46,30 @@ void Producto::info()
     cout << "Cantidad disponible: " << cant << endl;
     cout << "Precio: " << precio << " pesos" << endl;
     cout << "PrecioCP: " << precioCP << " puntos" << endl << endl;
+}
+
+int Producto::cantidad()
+{
+    return cant;
+}
+
+int Producto::costo()
+{
+    return precio;
+}
+
+int Producto::costoPuntos()
+{
+    return precioCP;
+}
+
+int Producto::obtenerPuntos()
+{
+    return puntos;
+}
+
+void Producto::setCant(int cant)
+{
+    this->cant = cant;
 }
 #endif
