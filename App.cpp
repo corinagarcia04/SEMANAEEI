@@ -179,7 +179,6 @@ int main()
     int puntosGanados = 0;
     do
     {
-
         bool casoVerificador = true;
         displayMenu();
         cin >> opcionMenu;
@@ -264,19 +263,22 @@ int main()
     } while (verificador);
     if (opcionMenu != 3)
     {
+        cout << endl << endl;
         // Sale del do while y se hace el proceso de pago
         cout << "Inicia proceso de pago" << endl;
         displayMetodoEntrega(metodoEntrega);
+        cout << endl <<endl;
         for (int i = 0; i < TiendaRecap.size(); i++)
         {
             costoTotal(ProducRecap[i], lista[TiendaRecap[i]], cobroTotal, cobroTotalPuntos, puntosGanados);
         }
+        cout << endl <<endl;
         metododePago(cobroTotal, cobroTotalPuntos, puntosGanados, user, metodoPago);
         if (metodoEntrega == 3)
         {
             modulo.info();
         }else{
-            cout << "Llava de identificador para recoger pedido: " <<modulo.getKey() << endl;
+            cout << endl << "Llava de identificador para recoger pedido: " <<modulo.getKey() << endl;
         }
         
     }
