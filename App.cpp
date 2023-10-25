@@ -26,7 +26,9 @@ void displayMenu()
 
 void displayMetodoEntrega(int &metodo)
 {
-    cout << endl << "Método de pago" << endl << endl;
+    cout << endl
+         << "Método de pago" << endl
+         << endl;
     cout << "(1) Servicio a domicilio" << endl;
     cout << "(2) Reserva en la tienda" << endl;
     cout << "(3) Entrega en módulo" << endl;
@@ -37,7 +39,6 @@ void displayMetodoEntrega(int &metodo)
 int displayTotalProductos(vector<Tienda> lista, int &opcionProducto)
 {
     int num = 1;
-    int opcionProducto;
     int tienda;
     cout << "Lista de productos disponibles: " << endl;
     for (int i = 0; i < lista.size(); i++)
@@ -64,20 +65,19 @@ int displayTotalProductos(vector<Tienda> lista, int &opcionProducto)
     return tienda;
 }
 
-void costoTotal(int SelProd, Tienda &lista,int &cobroTotal,int &cobroTotalPuntos,int &puntosGanados)
+void costoTotal(int SelProd, Tienda &lista, int &cobroTotal, int &cobroTotalPuntos, int &puntosGanados)
 {
     cobroTotal = cobroTotal + lista.productCosto(SelProd);
     cobroTotalPuntos = cobroTotalPuntos + lista.productPuntos(SelProd);
     lista.setCant(SelProd);
     puntosGanados = puntosGanados + lista.productObtPuntos(SelProd);
 }
-void metododePago(int cobroTotal,int cobroTotalPuntos,int puntosGanados,Usuario user)
+void metododePago(int cobroTotal, int cobroTotalPuntos, int puntosGanados, Usuario user)
 {
     cout << "El costo total es de: " << endl;
     cout << cobroTotal << " pesos" << endl;
     cout << cobroTotalPuntos << " puntos" << endl;
     cout << puntosGanados << " puntos ganados por la compra" << endl;
-
 }
 
 int main()
@@ -87,7 +87,7 @@ int main()
     // Registro de las tiendas y sus respectivo productos
     Tienda tienda("Tienda María", "Cristobal Colon", "103", "Santa Catarina", "Nuevo León", "México", "81 2301 3012", "8:00", "20:00");
     Producto prod1("Coca cola", "CC01", 17, 20, 40, 2), prod2("Fanta", "FA02", 20, 20, 40, 2), prod3("Pepsi", "PP002", 13, 19, 38, 2);
-    Usuario user("Pablo", "Hernández", "Cristobal Colon","222","Santa Catarina", "Nuevo León", "México", "81 1032 2103",800,5000);
+    Usuario user("Pablo", "Hernández", "Cristobal Colon", "222", "Santa Catarina", "Nuevo León", "México", "81 1032 2103", 800, 5000);
     lista.push_back(tienda);
     lista[cant].registroProducto(prod1);
     lista[cant].registroProducto(prod2);
@@ -127,7 +127,7 @@ int main()
     int puntosGanados = 0;
     do
     {
-        
+
         bool casoVerificador = true;
         displayMenu();
         cin >> opcionMenu;
@@ -136,6 +136,7 @@ int main()
         case 1:
             while (casoVerificador)
             {
+                cout << endl;
                 // Se despliega la lista de productos
                 if (controlRep)
                 {
@@ -164,34 +165,23 @@ int main()
                     controlRep = false;
                 }
             }
-            displayMetodoEntrega(metodoPago);
-            for(int i = 0; i <TiendaRecap.size();i++ )
-            {
-                costoTotal(ProducRecap[i],lista[TiendaRecap[i]],cobroTotal,cobroTotalPuntos,puntosGanados);
-            }
-            metododePago(cobroTotal,cobroTotalPuntos,puntosGanados,user);
             break;
         case 2:
             while (casoVerificador)
             {
+                cout << endl;
                 // Se despliega la lista de tiendas
-                displayTiendas(lista);
-                cout << "Opción: ";
-                cin>> opcionTienda;
-                // Revisa qué tienda escogió el usuario y muestra los productos de esa tienda
-                // cin >> opcionTienda;
-                // if (opcionTienda == 1) {
-                //     // muestra productos de tienda A
-                //     lista[opcionTienda-1].listaProductos();
-                // } else if (opcionTienda == 2) {
-                //     // muestra productos de tienda B
-                //     lista[opcionTienda-1].listaProductos();
-                // } else if (opcionTienda == 3) {
-                //     // muestra productos de tienda C
-                //     lista[opcionTienda-1].listaProductos();
-                // }
+                if (controlRep)
+                {
+                    displayTiendas(lista);
+                    cout << "Opción: ";
+                    cin >> opcionTienda;
+                }
+                cout << endl << endl;
                 lista[opcionTienda - 1].listaProductosA();
                 // Se pide al usuario que ingrese el producto que desea comprar
+                cout << endl
+                     << "Opción: ";
                 cin >> opcionProducto;
                 TiendaRecap.push_back(opcionTienda);
                 ProducRecap.push_back(opcionProducto - 1);
@@ -203,6 +193,8 @@ int main()
                 { // Si el usuario no quiere seguir comprando
                     verificador = false;
                     casoVerificador = false;
+                }else{
+                    controlRep = false;
                 }
             }
             break;
@@ -217,5 +209,11 @@ int main()
     } while (verificador);
     // Sale del do while y se hace el proceso de pago
     cout << "Inicia proceso de pago" << endl;
+    displayMetodoEntrega(metodoPago);
+    for (int i = 0; i < TiendaRecap.size(); i++)
+    {
+        costoTotal(ProducRecap[i], lista[TiendaRecap[i]], cobroTotal, cobroTotalPuntos, puntosGanados);
+    }
+    metododePago(cobroTotal, cobroTotalPuntos, puntosGanados, user);
     return 0;
 }
