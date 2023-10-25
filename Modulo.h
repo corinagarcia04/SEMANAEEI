@@ -1,6 +1,8 @@
 #ifndef Modulo_h
 #define Modulo_h
 
+#include <iostream>
+using namespace std;
 class Modulo
 {
 private:
