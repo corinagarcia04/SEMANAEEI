@@ -26,6 +26,7 @@ public:
     void setPuntos(int);
     int saldo();
     void setSaldo(int);
+    void info();
 };
 
 Usuario ::Usuario()
@@ -54,6 +55,16 @@ Usuario ::Usuario(string nombre, string apellido, string calle, string codPostal
     this->tel = tel;
     this->cantPuntos = cantPuntos;
     this->cartera = cartera;
+}
+
+void Usuario::info()
+{
+    cout << endl << "Información del Usuario: " << endl <<endl;
+
+    cout << "Nombre: " << nombre << " " << apellido << endl;
+    cout << "Dirección: " << calle << " " << codPostal << " " << ciudad << " " << estado << " " << pais << endl;
+    cout << "Teléfono: " << tel << endl;
+    cout << "Total de puntos canjeables: " << cantPuntos << endl << endl;
 }
 
 int Usuario::puntos()

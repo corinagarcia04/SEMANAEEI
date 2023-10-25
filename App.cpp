@@ -177,6 +177,8 @@ int main()
     int cobroTotal = 0;
     int cobroTotalPuntos = 0;
     int puntosGanados = 0;
+    user.info();
+    cout << endl;
     do
     {
         bool casoVerificador = true;
