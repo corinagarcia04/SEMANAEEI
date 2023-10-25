@@ -23,7 +23,9 @@ public:
     Usuario();
     Usuario(string, string, string,string, string, string,string, string, int, int);
     int puntos();
+    void setPuntos(int);
     int saldo();
+    void setSaldo(int);
 };
 
 Usuario ::Usuario()
@@ -62,5 +64,14 @@ int Usuario::puntos()
 int Usuario::saldo()
 {
     return cartera;
+}
+void Usuario::setPuntos(int cantPunt)
+{
+    this->cantPuntos=cantPunt;
+}
+
+void Usuario::setSaldo(int salario)
+{
+    this->cartera = salario;
 }
 #endif /* Usuario_h */

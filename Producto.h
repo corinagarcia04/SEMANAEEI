@@ -18,7 +18,7 @@ public:
     int costo();
     int costoPuntos();
     int obtenerPuntos();
-    void setCant(int cant);
+    void setCant(int);
 };
 
 Producto::Producto()
@@ -68,8 +68,8 @@ int Producto::obtenerPuntos()
     return puntos;
 }
 
-void Producto::setCant(int cant)
+void Producto::setCant(int cant1)
 {
-    this->cant = cant;
+    this->cant = cant1;
 }
 #endif
