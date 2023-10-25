@@ -23,8 +23,10 @@ public:
     Tienda();
     Tienda(string nomTienda, string calle, string codPostal, string ciudad, string estado, string pais, string tel, string horaInicio, string horaFinal);
     void info();
+    string nombreTienda();
     void registroProducto(Producto product);
-    void listaProductos();
+    void listaProductosA();
+    void listaProductosB(int &num);
 };
 
 Tienda::Tienda() {
@@ -67,12 +69,26 @@ void Tienda::registroProducto(Producto product)
     listaProd.push_back(product);
 }
 
-void Tienda::listaProductos()
+void Tienda::listaProductosA()
 {
     for(int i = 0; i< listaProd.size(); i++)
     {
         cout << "Producto " << i + 1  << endl;
         listaProd[i].info();
     }
+}
+
+void Tienda::listaProductosB(int &num)
+{
+    for(int i = 0; i< listaProd.size(); i++)
+    {
+        cout << "Producto " << num << endl;
+        listaProd[i].info();
+        num++;
+    }
+}
+string Tienda::nombreTienda()
+{
+    return nomTienda;
 }
 #endif

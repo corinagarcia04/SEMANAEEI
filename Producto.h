@@ -39,6 +39,7 @@ Producto::Producto(string nomProd,string id, int cant, int precio, int precioCP,
 void Producto::info()
 {
     cout << "Nombre: " << nomProd << endl;
+    cout << "Cantidad disponible: " << cant << endl;
     cout << "Precio: " << precio << " pesos" << endl;
     cout << "PrecioCP: " << precioCP << " puntos" << endl << endl;
 }
